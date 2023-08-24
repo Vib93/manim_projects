@@ -2,7 +2,8 @@ from manim import *
 
 class Identify_Quarters002(Scene):
     def construct(self):
-        self.camera.background_color = "#8DD5F1"  
+        self.camera.background_color = "#8DD5F1" 
+        #self.camera.background_image= 
         top_left=[-2,3,0]
         top_right=[2,3,0]
         bottom_right=[2,1,0]
@@ -13,9 +14,9 @@ class Identify_Quarters002(Scene):
         #self.play(FadeIn(R2,d1,d2))
         #self.wait(5)
         text1=Text("1",font_size=18,color=BLACK).move_to([0.25,2.75,1])
-        text2=Text("2",font_size=18,color=BLACK).move_to([1.75,2.25,1])
+        text2=Text("2",font_size=18,color=BLACK).move_to([1.75,1.75,1])
         text3=Text("3",font_size=18,color=BLACK).move_to([0.25,1.25,1])
-        text4=Text("4",font_size=18,color=BLACK).move_to([-1.75,2.25,1])
+        text4=Text("4",font_size=18,color=BLACK).move_to([-1.75,1.75,1])
         v1=Line(start=[0,5,0],end=[0,0,0]).set_color("#ED6CEF")
         h1=Line(start=[-3,2,0],end=[3,2,0]).set_color("#ED6CEF")
         group_original= Group(R2)
@@ -25,9 +26,6 @@ class Identify_Quarters002(Scene):
         #group_original.add(d1,d2)
         self.play(FadeIn(text1,text2,text3,text4))
         self.wait(2)
-        
-       
-        self.wait(2)
         group_original.add(v1,h1)
         t1=Polygon(top_left,[0,3,0],[0,2,0]).set_stroke(color="#B038B2",width=3).round_corners(radius=0.001).set_fill(color="#850F85",opacity=1)
         t2=Polygon(top_right,[0,3,0],[0,2,0]).set_stroke(color="#B038B2",width=3).round_corners(radius=0.001).set_fill(color="#850F85",opacity=1)
@@ -35,23 +33,41 @@ class Identify_Quarters002(Scene):
         groupt12=Group(t1,t2,text1copy)
         self.play(FadeIn(groupt12))
         self.wait(2)
-        self.play(groupt12.animate.move_to([-3,-2,0]))
+        self.play(groupt12.animate.move_to([-3,-1.75,0]))
         self.wait(2)
         t3=Polygon(top_right,[2,2,0],[0,2,0]).set_stroke(color="#B038B2", width=3).set_fill(color="#850F85",opacity=1)
-        t3copy=t3.copy().set_opacity(0)
-        t3.round_corners(radius=0.001)
-        t4=Polygon(bottom_right,[2,2,0],[0,2,0]).set_stroke(color="#B038B2",width=3).set_fill(color="#850F85",opacity=1).round_corners(radius=0.001)
-        text2copy=text2.copy().move_to[]
-        groupt34=Group(t3,t4,t3copy,text2copy)
-        #border2_t3 = t3.copy().set_stroke(color=YELLOW, width=5).round_corners(radius=0.001)
-        #border2_t4 = t4.copy().set_stroke(color=YELLOW,width =5).round_corners(radius=0.001)
+        t4=Polygon(bottom_right,[2,2,0],[0,2,0]).set_stroke(color="#B038B2",width=3).set_fill(color="#850F85",opacity=1)
+        text2copy=text2.copy()
+        #text2copy.move_to([1.75,1.75,1])
+        groupt34=Group(t3,t4,text2copy)
         self.play(FadeIn(groupt34))
         self.wait(1)
-        self.play(groupt34.animate.move_to([2,-1,0]))
+        self.play(groupt34.animate.move_to([1.5,-1.25,0]))
         self.wait(2)
-        #t3copy.move_to([2,-1,0])
-        v=t3copy.get_vertices()[1]
+        v=t3.get_vertices()[1]
         self.play(Rotate(t3,angle =-PI,about_point=v,rate_func=linear))
-        self.play(groupt34.animate.move_to([3,0,0]))
-
+        self.play(groupt34.animate.move_to([1,0.15,0]))
+        #self.wait(5)
+        t5=Polygon(bottom_right,[0,1,0],[0,2,0]).set_stroke(color="#B038B2", width=3).set_fill(color="#850F85",opacity=1)
+        t6=Polygon(bottom_left,[0,1,0],[0,2,0]).set_stroke(color="#B038B2", width=3).set_fill(color="#850F85",opacity=1)
+        text3copy=text3.copy()
+        groupt3=Group(t5,t6,text3copy)
+        self.play(FadeIn(groupt3))
+        self.play(groupt3.animate.move_to([2,-0.75,0]))
+        v2=t5.get_vertices()[1]
+        self.play(Rotate(groupt3,angle=-PI,about_point=v2))
+        text3copy.get_center()
+        self.play(Rotate(text3copy,angle=-PI,about_point=text3copy.get_center()))
+        self.play(groupt3.animate.move_to([1,-1.00,0]))
+        self.wait(1)
+        t7=Polygon(bottom_left,[-2,2,0],[0,2,0]).set_stroke(color="#B038B2", width=3).set_fill(color="#850F85",opacity=1)
+        t8=Polygon(top_left,[-2,2,0],[0,2,0]).set_stroke(color="#B038B2", width=3).set_fill(color="#850F85",opacity=1)
+        text4copy=text4.copy()
+        groupt4=Group(t7,t8,text4copy)
+        self.play(FadeIn(groupt4))
+        self.play(groupt4.animate.move_to([2,-2.60,0]))
+        v3=t8.get_vertices()[1]
+        self.play(Rotate(t8,angle=PI,about_point=v3))
+        self.play(groupt4.animate.move_to([1,-2.25,0]))
+        self.play(groupt34.animate.move_to([0,-1.5,0]),groupt3.animate.move_to([0,-1.5,0]),groupt4.animate.move_to([0,-1.5,0]),groupt12.animate.move_to([0,-1.5,0]))
         self.wait(5)
