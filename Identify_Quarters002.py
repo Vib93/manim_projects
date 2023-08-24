@@ -8,7 +8,9 @@ class Identify_Quarters002(Scene):
         self.camera.background_color=WHITE
         self.camera.frame_height=10
         self.camera.frame_width=20
-        img=ImageMobject("mainBG.png").scale_to_fit_height(config["frame_height"]).set_opacity(0.8)
+        self.camera.pixel_height=1080
+        self.camera.pixel_width=1920
+        img=ImageMobject("Frame(1080).jpg").scale_to_fit_width(config["frame_width"]).set_opacity(0.8)
         self.add(img)
         top_left=[-2,3,0]
         top_right=[2,3,0]
@@ -52,19 +54,19 @@ class Identify_Quarters002(Scene):
         self.wait(1)
         self.play(FadeIn(groupt12))
         self.wait(1)
-        self.play(groupt12.animate.move_to([-6,-1,0]))
+        self.play(groupt12.animate.move_to([-6.8,-1,0]))
         self.wait(1)  
         self.play(FadeIn(groupt34))
         self.wait(1)
-        self.play(groupt34.animate.move_to([-2.9,-0.50,0]))
+        self.play(groupt34.animate.move_to([-3.4,-0.50,0]))
         #self.wait(2)
         v=t3.get_vertices()[3]
         self.play(Rotate(t3,angle =-PI,about_point=v,rate_func=linear))
         self.play(FadeIn(groupt3))
-        self.play(groupt3.animate.move_to([2.2,-1,0]))
+        self.play(groupt3.animate.move_to([2.1,-1,0]))
         self.play(Rotate(groupt3,angle=-PI),UpdateFromAlphaFunc(text3copy,alwaysup))
         self.play(FadeIn(groupt4))
-        self.play(groupt4.animate.move_to([7.3,-0.5,0]))
+        self.play(groupt4.animate.move_to([7.5,-0.5,0]))
         v3=t8.get_vertices()[3]
         self.play(Rotate(t8,angle=PI,about_point=v3))
         self.wait(2)
